@@ -1,0 +1,18 @@
+{
+  "name": "arduino-esp32-plugin",
+  "version": "1.0.0",
+  "description": "ESP32 Arduino CLI plugin for AI Agents. Provides automated port detection, compilation, upload, serial logging, and exception crash decoding.",
+  "author": "CodyMaster & Antigravity",
+  "skills": [
+    "cm-arduino-esp32",
+    "cm-esp32-env",
+    "cm-esp32-build",
+    "cm-esp32-flash",
+    "cm-esp32-debug"
+  ],
+  "mcp": {
+    "name": "arduino-esp32-mcp",
+    "command": "python",
+    "args": ["mcp/mcp_server.py"]
+  }
+}

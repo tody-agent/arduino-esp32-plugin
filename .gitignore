@@ -1,0 +1,6 @@
+.cm/
+__pycache__/
+*.log
+*.elf
+*.bin
+*.lock
