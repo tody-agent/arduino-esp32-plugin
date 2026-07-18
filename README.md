@@ -11,21 +11,21 @@ An agent-first developer plugin and Model Context Protocol (MCP) server for prof
 
 ## 📑 Documentation Suite
 
-We provide a comprehensive bilingual documentation suite inside the `docs/` directory:
+We provide a comprehensive documentation suite inside the `docs/` directory:
 
-1.  **Codebase Scan / Phân tích nguồn**:
+1.  **Codebase Scan**:
     *   [analysis.md](docs/analysis.md) — Technical layouts, files, and dependencies.
-2.  **Design & Strategy / Thiết kế & Chiến lược**:
-    *   [personas.md](docs/personas.md) — User profiles (engineers, autonomous agents, educators).
+2.  **Design & Strategy**:
+    *   [personas.md](docs/personas.md) — User profiles (engineers, agents, educators).
     *   [jtbd.md](docs/jtbd.md) — Jobs-To-Be-Done frameworks and metrics.
-3.  **System Layouts / Luồng hoạt động & Kiến trúc**:
+3.  **System Layouts & Architecture**:
     *   [flows.md](docs/flows.md) — Sequence diagrams of monitor locking, stack decoding, and logic translation.
     *   [architecture.md](docs/architecture.md) — Hybrid architecture engine details and ADR design logs.
-4.  **SOP Guides / Hướng dẫn Quy trình**:
+4.  **SOP Guides**:
     *   [sop-flashing.md](docs/sop/sop-flashing.md) — Step-by-step flashing, upload synchronization, and compile diagnostics.
     *   [sop-debugging.md](docs/sop/sop-debugging.md) — Live serial logs, bidirectional queue send, and exception trace translation.
     *   [sop-simulation.md](docs/sop/sop-simulation.md) — Offline local logic simulation, mock sensors, and waveform config.
-5.  **Developer API / Tra cứu API**:
+5.  **Developer API**:
     *   [api-reference.md](docs/api/api-reference.md) — Standard 11 JSON-RPC tools, schemas, and call payloads.
 
 To import all files into Google NotebookLM or AI indexes, see the absolute path URL list:
