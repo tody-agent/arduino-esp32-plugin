@@ -261,6 +261,78 @@ def handle_audit_pins(sketch_path):
         
     return {"content": [{"type": "text", "text": res["stdout"]}]}
 
+def handle_start_simulation(sketch_path):
+    handle_stop_simulation()
+    os.makedirs(".cm", exist_ok=True)
+    
+    log_path = ".cm/esp32_serial.log"
+    if os.path.exists(log_path):
+        try:
+            os.remove(log_path)
+        except Exception as e:
+            log(f"Warning: Failed to remove old serial log: {e}")
+            
+    simulator_script = os.path.join(scripts_dir, "arduino_simulator.py")
+    if not os.path.exists(simulator_script):
+        return {"content": [{"type": "text", "text": f"Simulator script not found at {simulator_script}."}], "isError": True}
+        
+    try:
+        stdout_log = open(".cm/simulator_stdout.log", "w")
+        stderr_log = open(".cm/simulator_stderr.log", "w")
+        
+        proc = subprocess.Popen(
+            [sys.executable, simulator_script, os.path.abspath(sketch_path)],
+            stdout=stdout_log,
+            stderr=stderr_log,
+            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0
+        )
+        
+        with open(".cm/simulator.pid", "w") as f:
+            f.write(str(proc.pid))
+            
+        return {"content": [{"type": "text", "text": f"Simulation started successfully in background (PID: {proc.pid}). Output logged to .cm/esp32_serial.log."}]}
+    except Exception as e:
+        return {"content": [{"type": "text", "text": f"Failed to start simulation: {e}"}], "isError": True}
+
+def handle_stop_simulation():
+    pid_file = ".cm/simulator.pid"
+    if os.path.exists(pid_file):
+        try:
+            with open(pid_file, "r") as f:
+                pid = int(f.read().strip())
+            log(f"Stopping simulation process with PID: {pid}")
+            if sys.platform == "win32":
+                subprocess.run(["taskkill", "/F", "/PID", str(pid)], capture_output=True)
+            else:
+                import signal
+                os.kill(pid, signal.SIGTERM)
+            return {"content": [{"type": "text", "text": f"Simulation stopped successfully (PID: {pid})."}]}
+        except Exception as e:
+            return {"content": [{"type": "text", "text": f"Failed to stop simulation process: {e}"}], "isError": True}
+        finally:
+            try:
+                os.remove(pid_file)
+            except:
+                pass
+    return {"content": [{"type": "text", "text": "No active simulation process found."}]}
+
+def handle_get_simulation_status():
+    pid_file = ".cm/simulator.pid"
+    if os.path.exists(pid_file):
+        try:
+            with open(pid_file, "r") as f:
+                pid = int(f.read().strip())
+            if sys.platform == "win32":
+                res = subprocess.run(["tasklist", "/FI", f"PID eq {pid}"], capture_output=True, text=True)
+                if str(pid) in res.stdout:
+                    return {"content": [{"type": "text", "text": "RUNNING"}]}
+            else:
+                os.kill(pid, 0)
+                return {"content": [{"type": "text", "text": "RUNNING"}]}
+        except:
+            pass
+    return {"content": [{"type": "text", "text": "STOPPED"}]}
+
 def main():
     log("Server starting...")
     while True:
@@ -388,6 +460,27 @@ def main():
                             },
                             "required": ["sketch_path"]
                         }
+                    },
+                    {
+                        "name": "start_simulation",
+                        "description": "Khởi chạy giả lập logic cục bộ chạy ẩn cho Sketch Arduino (không cần phần cứng).",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {
+                                "sketch_path": {"type": "string", "description": "Đường dẫn thư mục chứa sketch hoặc file .ino"}
+                            },
+                            "required": ["sketch_path"]
+                        }
+                    },
+                    {
+                        "name": "stop_simulation",
+                        "description": "Dừng tiến trình giả lập logic đang chạy ngầm.",
+                        "inputSchema": {"type": "object", "properties": {}}
+                    },
+                    {
+                        "name": "get_simulation_status",
+                        "description": "Lấy trạng thái hoạt động của tiến trình giả lập (RUNNING hoặc STOPPED).",
+                        "inputSchema": {"type": "object", "properties": {}}
                     }
                 ]
                 response = {
@@ -449,6 +542,14 @@ def main():
                     result = handle_audit_pins(
                         arguments.get("sketch_path")
                     )
+                elif tool_name == "start_simulation":
+                    result = handle_start_simulation(
+                        arguments.get("sketch_path")
+                    )
+                elif tool_name == "stop_simulation":
+                    result = handle_stop_simulation()
+                elif tool_name == "get_simulation_status":
+                    result = handle_get_simulation_status()
                 else:
                     result = {"content": [{"type": "text", "text": f"Unknown tool: {tool_name}"}], "isError": True}
                 
