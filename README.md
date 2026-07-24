@@ -1,53 +1,57 @@
-# ESP32 Arduino CLI Developer Plugin
+# ESP32 Arduino CLI Developer Plugin & MCP Server
 
 [![GitHub Release](https://img.shields.io/github/v/release/tody-agent/arduino-esp32-plugin)](https://github.com/tody-agent/arduino-esp32-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An agent-first developer plugin and Model Context Protocol (MCP) server for professional **ESP32** development using **Arduino CLI** on Windows. It empowers AI agents (like Antigravity, Claude Desktop, Cursor, Cline, Roo Code) with hardware compile, upload, bidirectional serial communication, smart diagnostics, local logic simulation, and CPU crash trace decoding.
+An agent-first developer plugin and Model Context Protocol (MCP) server for professional **ESP32** firmware development using **Arduino CLI** on Windows. 
+
+Designed specifically for AI-assisted workflows (Cursor, Claude Desktop, Cline, Roo Code, Antigravity) and human developers, it solves the most painful pain points of hardware development: COM port lock conflicts, hard-to-read register crash logs, lack of offline logical testing, and accidental hardware damage.
 
 🌐 **Tiếng Việt**: Đọc bản tài liệu giới thiệu bằng Tiếng Việt tại [README_VI.md](README_VI.md).
 
 ---
 
+## 💎 The Value Proposition: Why Choose This Plugin?
+
+Firmware development is traditionally prone to interruption and friction. Here is how this plugin solves these issues:
+
+| Pain Point | The Solution | Core Value |
+|---|---|---|
+| **Port Access Denied**<br>Serial monitors and upload tools fight for the same COM port. | **Automatic Lock Synchronization**<br>The monitor detects compiler activity, automatically closes the port, and reopens it after flashing. | **Zero "Port Busy" Errors**<br>No manual clicking or disconnecting needed. |
+| **Confusing Register Dumps**<br>Guru Meditation crashes print raw hex stacks. | **Real-Time Stack Decrypter**<br>Translates hex addresses to file paths and C++ line numbers using `addr2line`. | **Instant Debugging**<br>Find the exact line that caused the crash in <2 seconds. |
+| **No Board Attached**<br>Can't test or verify loop logic while offline or flying. | **Python-Native Logic Simulator**<br>Translates C++ Arduino code to Python and executes sketch logic host-side. | **Offline Logical TDD**<br>Verify loops, variables, and state machines offline. |
+| **Unpredictable Sensors**<br>Testing extreme values at your desk is difficult. | **Mock Waveform Configurations**<br>Configures simulated pins to output constant values, random noise, or sine waves. | **Reproducible Testbenches**<br>Mock DHT, potentiometer, or threshold values. |
+| **Bricked Hardware**<br>Accidentally driving boot pins or SPI lines as output. | **GPIO Pin Auditing**<br>Scans the code before flashing and warns of dangerous configurations. | **Hardware Safety**<br>Protects physical microcontrollers from short circuits. |
+
+---
+
 ## 📑 Documentation Suite
 
-We provide a comprehensive documentation suite inside the `docs/` directory:
+Read the full guides inside the `docs/` folder:
 
-1.  **Codebase Scan**:
-    *   [analysis.md](docs/analysis.md) — Technical layouts, files, and dependencies.
-2.  **Design & Strategy**:
-    *   [personas.md](docs/personas.md) — User profiles (engineers, agents, educators).
-    *   [jtbd.md](docs/jtbd.md) — Jobs-To-Be-Done frameworks and metrics.
-3.  **System Layouts & Architecture**:
-    *   [flows.md](docs/flows.md) — Sequence diagrams of monitor locking, stack decoding, and logic translation.
-    *   [architecture.md](docs/architecture.md) — Hybrid architecture engine details and ADR design logs.
-4.  **SOP Guides**:
-    *   [sop-flashing.md](docs/sop/sop-flashing.md) — Step-by-step flashing, upload synchronization, and compile diagnostics.
-    *   [sop-debugging.md](docs/sop/sop-debugging.md) — Live serial logs, bidirectional queue send, and exception trace translation.
-    *   [sop-simulation.md](docs/sop/sop-simulation.md) — Offline local logic simulation, mock sensors, and waveform config.
-5.  **Developer API**:
-    *   [api-reference.md](docs/api/api-reference.md) — Standard 11 JSON-RPC tools, schemas, and call payloads.
+*   📂 [analysis.md](docs/analysis.md) — Structural layout, entry points, and script details.
+*   👤 [personas.md](docs/personas.md) — Targeted user profiles (IoT Engineers, AI coding agents, Educators).
+*   🎯 [jtbd.md](docs/jtbd.md) — Functional and emotional jobs, success metrics, and user journey.
+*   🔒 [flows.md](docs/flows.md) — Mermaid diagrams mapping serial monitor locking, stack decoding, and logic translation.
+*   🏗️ [architecture.md](docs/architecture.md) — Hybrid architecture engine details and ADR design logs.
+*   📖 [SOP: Compiling & Flashing](docs/sop/sop-flashing.md) — Guide for build compilation and flash locking.
+*   📖 [SOP: Debugging & Decoding](docs/sop/sop-debugging.md) — Guide for serial monitors, command queues, and stack trace decryption.
+*   📖 [SOP: Simulation & Mocks](docs/sop/sop-simulation.md) — Guide for running logic simulations and waveform config files.
+*   🛠️ [api-reference.md](docs/api/api-reference.md) — Standard 11 JSON-RPC tools, schemas, and payload examples.
 
-To import all files into Google NotebookLM or AI indexes, see the absolute path URL list:
-👉 [sitemap-urls.txt](docs/sitemap-urls.txt)
+*To import the entire documentation suite into Google NotebookLM, load the absolute path list in [sitemap-urls.txt](docs/sitemap-urls.txt).*
 
 ---
 
-## 🛠️ Core Features
+## ⚙️ Quick Start & Integration
 
-*   💻 **Virtual Logic Simulation**: Simulates Arduino sketches offline by translating C++ to executable Python and running them in a lightweight background process.
-*   📈 **Mock Waveform Sensors**: Simulates physical sensors (`analogRead`) using configured sine, constant, or random patterns in `simulation_sensors.json`.
-*   🔒 **GPIO Safety Auditing (`audit_pins`)**: Scans code before flashing to block compilation if unsafe pins (such as SPI flash pins 6-11) or serial interfaces are driven as outputs, preventing hardware short circuits or bricking.
-*   🧠 **Smart Compiler Diagnostics**: Intercepts compiler errors and converts them into structured diagnostics, suggesting the exact library to install on missing headers, or recommending partition configuration modifications for oversized sketches.
-*   ⚡ **Bidirectional Serial Monitor**: Supports background serial monitor logging to a file while listening to a file-based command queue (`.cm/serial_input.queue`) for sending data downward to the board.
-*   🔍 **Crash Stack Trace Decoding (`decode_crash_stack`)**: Translates ESP32 Guru Meditation backtrace hex addresses back to actual C++ filenames and line numbers using `addr2line`.
-*   📦 **Workspace Caching (`board_state.json`)**: Persists the last detected board COM port and FQBN to speed up compilation and flashing cycles.
+### 1. Requirements
+*   **OS**: Windows
+*   **Toolchain**: `arduino-cli` configured on your environment `PATH`.
+*   **Python**: Version 3.x.
 
----
-
-## ⚙️ Quick Integration
-
-Add this server to your AI agent config (e.g. `%APPDATA%\Claude\claude_desktop_config.json`):
+### 2. Integration with AI Clients
+Add this server to your AI desktop client config (e.g. `%APPDATA%\Claude\claude_desktop_config.json`):
 
 ```json
 {
