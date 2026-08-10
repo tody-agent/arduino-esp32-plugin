@@ -1,5 +1,7 @@
 .cm/
 __pycache__/
+*.pyc
+Image/
 *.log
 *.elf
 *.bin
