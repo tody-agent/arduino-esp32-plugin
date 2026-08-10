@@ -1,7 +1,7 @@
 {
-  "name": "arduino-esp32-plugin",
+  "name": "esp32-master",
   "version": "1.0.0",
-  "description": "ESP32 Arduino CLI plugin for AI Agents. Provides automated port detection, compilation, upload, serial logging, and exception crash decoding.",
+  "description": "ESP32 Master: The Ultimate AI-First & Human-Friendly Developer Suite & MCP Server for ESP32 Firmware Development. Automated port detection, serial lock management, Web UI debugger, crash stack trace decoding, and logic translation.",
   "author": "CodyMaster & Antigravity",
   "skills": [
     "cm-arduino-esp32",

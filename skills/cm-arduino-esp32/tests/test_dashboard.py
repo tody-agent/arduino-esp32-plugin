@@ -20,7 +20,7 @@ def test_dashboard():
         url_home = f"http://localhost:{PORT}/"
         req = urllib.request.urlopen(url_home)
         html_content = req.read().decode("utf-8")
-        assert "Mi Home - ESP32 Mobile Studio" in html_content
+        assert "ESP32 Mobile Studio" in html_content
         assert "window.showPage" in html_content
         print("[OK] GET / returned index page successfully.")
 
