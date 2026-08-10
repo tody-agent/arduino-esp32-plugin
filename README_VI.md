@@ -5,42 +5,66 @@
 [![MCP Server](https://img.shields.io/badge/MCP%20Server-Standard%201.0-blueviolet.svg)](https://modelcontextprotocol.io)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)](https://microsoft.com/windows)
 
-![Kiến Trúc Hệ Sinh Thái ESP32 Master & AI Agents](docs/assets/esp32_master_hero.jpg)
+![Hệ Sinh Thái ESP32 Master & Trợ Lý AI](docs/assets/hero_banner.png)
 
-> **ESP32 Master** là bộ công cụ phát triển phần cứng nhúng **ESP32** chuyên nghiệp, tích hợp máy chủ Model Context Protocol (MCP) dành riêng cho các Trợ lý AI (**Claude Desktop**, **Cursor**, **OpenAI Codex**, **Antigravity**, **Roo Code**, **Cline**) và các Nhà phát triển / Maker phần cứng.
+> **ESP32 Master** là bộ công cụ phát triển phần cứng nhúng **ESP32 / ESP32-S3** chuyên nghiệp, tích hợp máy chủ Model Context Protocol (MCP) dành riêng cho các Trợ lý AI (**Claude Desktop**, **Cursor**, **OpenAI Codex**, **Antigravity**, **Roo Code**) và Nhà phát triển phần cứng.
 
-Dự án giải quyết triệt để những nỗi đau lớn nhất khi lập trình vi điều khiển: **Tranh chấp cổng COM (Port Access Denied)**, **Mạch bị crash đơ chỉ in ra chuỗi hex khó hiểu**, **Thiếu giao diện giám sát trực quan**, và **Nguy cơ chập cháy hỏng mạch do khai báo nhầm chân GPIO**.
+Dự án kết nối trực tiếp các Trợ lý AI với phần cứng vi điều khiển ESP32, tự động biến các câu lệnh ngôn ngữ tự nhiên thành chương trình nạp xuống phần cứng hoàn chỉnh, hỗ trợ giải mã lỗi crash stack trace 1-touch tự động.
 
 🇬🇧 **English Version**: Read the full English documentation at [README.md](README.md).
 
 ---
 
-## 🚀 Hướng Dẫn Sử Dụng Cùng Trợ Lý AI (Quy Trình 4 Bước)
+## ⚡ Bảng So Sánh Nỗi Đau & Giải Pháp Đột Phá
 
-![Quy Trình 4 Bước Tự Động Hóa Với AI](docs/assets/esp32_studio_webui.jpg)
+![So Sánh Nỗi Đau Lập Trình Truyền Thống vs Giải Pháp ESP32 Master](docs/assets/before_after_comparison.png)
 
-### 1. 🤖 Ra Lệnh Cho Trợ Lý AI (Claude / Cursor / Codex)
-Yêu cầu AI bằng ngôn ngữ tự nhiên:
-> *"Viết cho tôi một sketch ESP32 đọc cảm biến nhiệt độ từ chân GPIO4 và điều khiển bật tắt LED qua cổng Serial."*
-
-### 2. 🛡️ Tự Động Kiểm Tra An Toàn GPIO & Biên Dịch
-AI gọi công cụ `audit_gpio_safety` để đảm bảo code không chập cháy các chân bootloader, sau đó biên dịch tự động bằng `compile_sketch` qua `arduino-cli`.
-
-### 3. 🔒 Tự Động Nhường Cổng COM (Zero-Conflict Flashing)
-AI gọi công cụ `upload_sketch`. Bộ quản lý khóa thông minh **Smart Lock Arbitrator** tự động tạm dừng Serial Monitor, giải phóng cổng COM, nạp code xuống ESP32 và mở lại monitor liên tục mà không bị lỗi bận cổng.
-
-### 4. 💡 Giải Mã Crash Trace 1-Click Ngay Lập Tức
-Nếu mạch ESP32 bị lỗi `Guru Meditation Error`, AI hoặc nhà phát triển gọi `decode_stack_trace` để tự động dịch chuỗi lỗi hex thành **file C++ và chính xác số dòng code bị lỗi** trong <2 giây.
+| Nỗi Đau Lập Trình Truyền Thống | Giải Pháp Đột Phá ESP32 Master | Giá Trị Mang Lại |
+|---|---|---|
+| ❌ **Bị Lỗi Cổng COM Bận (Port Access Denied)**<br>Serial Monitor và uploader tranh nhau cổng COM làm đơ nạp code. | ⚡ **Bộ Quản Lý Khóa Thông Minh**<br>Serial Monitor tự động ngắt kết nối khi nạp code và tự động kết nối lại sau nạp. | **100% Không Lỗi Tranh Cổng** |
+| ❌ **Mạch Crash Ra Chuỗi Hex Khó Hiểu**<br>Lỗi `Guru Meditation Error` chỉ in ra chuỗi địa chỉ hex bí ẩn. | ⚡ **Bộ Giải Mã Stack Trace 1-Touch**<br>Tự động dịch chuỗi địa chỉ hex thành chính xác **tên file C++ & số dòng lỗi** trong <2 giây. | **Sửa Lỗi Ngay Lập Tức** |
+| ❌ **Giao Diện Dòng Lệnh Khó Dùng**<br>Khó theo dõi log hoặc phát lệnh điều khiển từ thiết bị di động. | ⚡ **ESP32 Mobile & PC Web Studio**<br>Màn hình Web UI trực quan, vòng nhịp tim thiết bị & nút bấm cảm ứng tại `http://localhost:8321`. | **Trải Nghiệm UX Cao Cấp** |
+| ❌ **Nguy Cơ Chập Cháy Mạch Nhúng**<br>Khai báo sai các chân bootloader/strapping làm hỏng vi điều khiển. | ⚡ **Bộ Kiểm Tra An Toàn GPIO**<br>Tự động quét cấu hình chân trước khi nạp code để tránh chập mạch. | **An Toàn Phần Cứng Tuyệt Đối** |
 
 ---
 
-## 🛠️ Cấu Hình 1-Click & Danh Mục 12 Công Cụ MCP
+## 🚀 Quy Trình 4 Bước Tự Động Hóa Với AI
 
-![Tích Hợp MCP Client & 12 Công Cụ MCP](docs/assets/esp32_stack_decoder.jpg)
+![Quy Trình 4 Bước Tự Động Hóa](docs/assets/infographic_workflow.png)
 
-### Thêm ESP32 Master Vào Trợ Lý AI
+### 1. 🤖 Ra Lệnh Ngôn Ngữ Tự Nhiên
+Yêu cầu **Claude Desktop**, **Cursor**, hoặc **Codex**:
+> *"Viết cho tôi một sketch ESP32 đọc cảm biến nhiệt độ chân GPIO4 và điều khiển bật tắt LED."*
 
-Thêm cấu hình máy chủ MCP vào công cụ AI của bạn (Ví dụ: `%APPDATA%\Claude\claude_desktop_config.json` hoặc trong cài đặt MCP của Cursor / Antigravity):
+### 2. 🛡️ Kiểm Tra An Toàn GPIO & Biên Dịch Tự Động
+AI gọi công cụ `audit_gpio_safety` để đảm bảo an toàn phần cứng, sau đó biên dịch bằng `compile_sketch` qua `arduino-cli`.
+
+### 3. 🔒 Nạp Code An Toàn Không Đụng Cổng
+AI gọi `upload_sketch`. Bộ **Smart Lock Arbitrator** tự động ngắt Serial Monitor, nhường cổng COM cho uploader nạp code và kết nối lại monitor sau khi hoàn tất.
+
+### 4. 💡 Trợ Lý Sửa Lỗi & Giải Mã Crash
+Nếu mạch gặp lỗi `Guru Meditation Error`, AI gọi `decode_stack_trace` để dịch chuỗi hex thành tên file C++ và chính xác số dòng lỗi trong <2 giây.
+
+---
+
+## 📱 Giao Diện Visual Web Studio (`http://localhost:8321`)
+
+![Màn Hình Web UI Studio Dashboard](docs/assets/ui_studio_dashboard.png)
+
+Bên cạnh khả năng tự động hóa 100% qua AI Agent, ESP32 Master tích hợp sẵn giao diện Web UI Studio:
+- **Vòng Tròn Nhịp Tim Thiết Bị (Heartbeat Ring)**: Hiển thị trạng thái mạch sống/chết trực quan bằng màu xanh/đỏ thời gian thực.
+- **Trợ Lý Sửa Lỗi Tự Động**: Tự động dịch lỗi crash đơ mạch thành hướng dẫn khắc phục ngôn ngữ tự nhiên.
+- **Nhật Ký Thời Gian Thực (Log Terminal)**: Giao diện dòng lệnh chuẩn font monospace, phân màu `INFO`, `WARN`, `PANIC`.
+- **Bảng Điều Khiển Nhanh 1-Click**: Nút bấm cảm ứng gửi lệnh nhanh (**Bật/Tắt LED**, **Reboot**, **Decode Crash**).
+- **Hỗ Trợ Song Ngữ**: Nút đổi ngôn ngữ Tiếng Anh / Tiếng Việt `[ 🌐 VI | 🌐 EN ]` linh hoạt.
+
+---
+
+## 🛠️ Danh Mục 12 Công Cụ MCP Đã Đăng Ký
+
+### Cấu Hình MCP Client
+
+Thêm cấu hình vào AI client của bạn (Ví dụ: `%APPDATA%\Claude\claude_desktop_config.json`):
 
 ```json
 {
@@ -48,7 +72,7 @@ Thêm cấu hình máy chủ MCP vào công cụ AI của bạn (Ví dụ: `%APP
     "esp32-master": {
       "command": "python",
       "args": [
-        "C:/path-to-plugin/esp32-master/mcp/mcp_server.py"
+        "C:/Adruino/Esp32-Master/mcp/mcp_server.py"
       ],
       "env": {
         "LOCALAPPDATA": "C:/Users/YOUR_USER/AppData/Local"
@@ -58,7 +82,7 @@ Thêm cấu hình máy chủ MCP vào công cụ AI của bạn (Ví dụ: `%APP
 }
 ```
 
-### Danh Mục 12 Công Cụ MCP Đã Đăng Ký
+### Danh Mục 12 Công Cụ MCP
 
 | Tên Công Cụ MCP | Chức Năng & Giá Trị Đem Lại |
 |---|---|
@@ -74,61 +98,6 @@ Thêm cấu hình máy chủ MCP vào công cụ AI của bạn (Ví dụ: `%APP
 | `audit_gpio_safety` | Quét cấu hình chân GPIO để ngăn ngừa chập cháy vi điều khiển. |
 | `get_board_info` | Lấy thông tin revision chip, địa chỉ MAC, tốc độ Flash. |
 | `configure_mock_sensor` | Cấu hình dạng sóng tín hiệu cảm biến giả lập. |
-
----
-
-## 💎 Bảng So Sánh Nỗi Đau & Giải Pháp
-
-| Nỗi Đau Lập Trình Hardware | Giải Pháp Của ESP32 Master | Lợi Ích Mang Lại |
-|---|---|---|
-| **Bị báo lỗi Port Busy**<br>Serial Monitor và công cụ nạp tranh cổng COM. | **Cơ chế Khóa Tự Động**<br>Tự đóng monitor khi nạp code và mở lại sau nạp. | **Không còn lỗi bận cổng COM** |
-| **Mạch đơ in lỗi Guru Meditation**<br>Toàn dòng lệnh hex không hiểu gì. | **Bộ Giải Mã Stack Trace**<br>Dịch hex thành file C++ & số dòng lỗi chính xác. | **Tìm ra lỗi ngay lập tức** |
-| **Log dòng lệnh khó đọc**<br>Khó xem log trên điện thoại di động. | **ESP32 Studio Web UI**<br>Màn hình quản lý trực quan tại `http://localhost:8321`. | **Trải nghiệm UX đẹp & dễ dùng** |
-| **Không có sẵn mạch phần cứng**<br>Không test được logic khi đi xa. | **Mô Phỏng Logic Python**<br>Chạy mô phỏng vòng lặp code trên máy tính. | **Kiểm thử logic mọi lúc mọi nơi** |
-| **Nguy cơ cháy mạch**<br>Khai báo nhầm chân boot/nguồn. | **Kiểm Tra An Toàn GPIO**<br>Cảnh báo các chân nguy hiểm trước khi nạp. | **An toàn tuyệt đối cho phần cứng** |
-
----
-
-## 📱 Giao Diện Web UI ESP32 Mobile Studio (`http://localhost:8321`)
-
-Bên cạnh khả năng tự động hóa 100% qua AI Agent, ESP32 Master tích hợp sẵn giao diện Web UI Studio:
-- **Vòng Tròn Nhịp Tim Thiết Bị (Heartbeat Ring)**: Hiển thị trạng thái mạch sống/chết trực quan bằng màu xanh/đỏ thời gian thực.
-- **Trợ Lý Sửa Lỗi Tự Động**: Tự động dịch lỗi crash đơ mạch thành hướng dẫn khắc phục ngôn ngữ tự nhiên.
-- **Nhật Ký Thời Gian Thực (Log Terminal)**: Giao diện dòng lệnh chuẩn font monospace, phân màu `INFO`, `WARN`, `PANIC`.
-- **Bảng Điều Khiển Nhanh 1-Click**: Nút bấm cảm ứng gửi lệnh nhanh (**Bật/Tắt LED**, **Reboot**, **Decode Crash**).
-- **Hỗ Trợ Song Ngữ**: Nút đổi ngôn ngữ Tiếng Anh / Tiếng Việt `[ 🌐 VI | 🌐 EN ]` linh hoạt.
-
----
-
-## ⚙️ Hướng Dẫn Cài Đặt Nhanh
-
-### 1. Yêu Cầu Môi Trường
-- **Hệ điều hành**: Windows (PowerShell 5.1+)
-- **Công cụ biên dịch**: `arduino-cli` đã được thêm vào biến môi trường `PATH`.
-- **Python**: Phiên bản 3.8 trở lên.
-
-### 2. Khởi Chạy Web UI Studio Thủ Công
-
-Bạn có thể chạy trực tiếp giao diện Web UI Studio bằng PowerShell:
-
-```powershell
-python C:\path-to-plugin\skills\cm-arduino-esp32\scripts\log_dashboard.py
-```
-Sau đó mở địa chỉ **`http://localhost:8321`** trên trình duyệt máy tính hoặc điện thoại!
-
----
-
-## 📑 Danh Mục Tài Liệu Chi Tiết
-
-- 📂 [analysis.md](docs/analysis.md) — Cấu trúc thư mục, luồng thực thi và chi tiết script.
-- 👤 [personas.md](docs/personas.md) — Chân dung người dùng (IoT Engineers, AI Agents, Non-Tech Makers).
-- 🎯 [jtbd.md](docs/jtbd.md) — Phân tích nhu cầu công việc (JTBD) và tiêu chí thành công.
-- 🔒 [flows.md](docs/flows.md) — Sơ đồ Mermaid mô tả luồng nhường cổng Serial và giải mã stack trace.
-- 🏗️ [architecture.md](docs/architecture.md) — Kiến trúc lai hybrid engine và nhật ký thiết kế ADR.
-- 📖 [SOP: Biên Dịch & Nạp Code](docs/sop/sop-flashing.md) — Quy trình biên dịch và khóa nhường cổng COM.
-- 📖 [SOP: Gỡ Lỗi & Giải Mã Crash](docs/sop/sop-debugging.md) — Quy trình giám sát Serial và giải mã lỗi stack trace.
-- 📖 [SOP: Mô Phỏng & Giả Lập](docs/sop/sop-simulation.md) — Quy trình chạy mô phỏng logic và cảm biến giả lập.
-- 🛠️ [API Reference](docs/api/api-reference.md) — Chi tiết bảng tin JSON-RPC và ví dụ dữ liệu mẫu.
 
 ---
 
