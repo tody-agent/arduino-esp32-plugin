@@ -87,6 +87,13 @@ Khi cổng Serial đang được monitor ngầm, gửi lệnh điều khiển tr
 ```
 *Tiến trình monitor nền sẽ tự động đọc, truyền qua Serial, và xóa hàng đợi.*
 
+### I. Giao diện Visual Log Debugger Web UI Dashboard (Mới)
+Khởi chạy trang Web UI trực quan (chạy tại `http://localhost:8321`) để giám sát log thời gian thực, tự động giải mã crash stack trace và truyền lệnh 2 chiều trực quan:
+```powershell
+powershell -File .agents/skills/cm-arduino-esp32/scripts/launch_dashboard.ps1
+```
+*Hoặc sử dụng MCP Tool: `launch_log_dashboard`.*
+
 ---
 
 ## 3. Quy trình gỡ lỗi lỗi phần cứng phổ biến (Hardware Troubleshooting)

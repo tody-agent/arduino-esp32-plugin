@@ -29,7 +29,11 @@ Backtrace:0x400d0c35:0x3ffb1f20 0x400d0c7a:0x3ffb1f40
 -   **IllegalInstruction:** Vi điều khiển cố chạy lệnh không hợp lệ, thường do ghi đè vùng nhớ code (buffer overflow) hoặc trỏ con trỏ hàm sai địa chỉ.
 
 ### Giải pháp giải mã tự động:
-Chạy script `decode_stack.ps1` để tự động chuyển đổi chuỗi `Backtrace` sang dòng code cụ thể:
+1. **Qua giao diện Visual Log Debugger Web UI (Khuyến nghị):**
+   Mở trình duyệt Web tại `http://localhost:8321` (chạy `powershell -File .agents/skills/cm-arduino-esp32/scripts/launch_dashboard.ps1` hoặc MCP tool `launch_log_dashboard`) và bấm nút **"🔍 Decode Crash"**.
+
+2. **Qua lệnh CLI:**
+   Chạy script `decode_stack.ps1` để tự động chuyển đổi chuỗi `Backtrace` sang dòng code cụ thể:
 ```powershell
 powershell -File .agents/skills/cm-arduino-esp32/scripts/decode_stack.ps1 -LogText (Get-Content .cm/esp32_serial.log | Out-String) -ElfPath .cm/build/<SketchName>.ino.elf
 ```

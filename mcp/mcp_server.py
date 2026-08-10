@@ -333,6 +333,17 @@ def handle_get_simulation_status():
             pass
     return {"content": [{"type": "text", "text": "STOPPED"}]}
 
+def handle_launch_log_dashboard(port=8321):
+    dashboard_script = os.path.join(scripts_dir, "log_dashboard.py")
+    if not os.path.exists(dashboard_script):
+        return {"content": [{"type": "text", "text": f"Dashboard script not found at {dashboard_script}"}], "isError": True}
+    
+    try:
+        proc = subprocess.Popen(["python", dashboard_script], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return {"content": [{"type": "text", "text": f"ESP32 Visual Log Debugger launched on http://localhost:{port} (PID: {proc.pid})."}]}
+    except Exception as e:
+        return {"content": [{"type": "text", "text": f"Failed to launch dashboard: {e}"}], "isError": True}
+
 def main():
     log("Server starting...")
     while True:
@@ -481,6 +492,16 @@ def main():
                         "name": "get_simulation_status",
                         "description": "Lấy trạng thái hoạt động của tiến trình giả lập (RUNNING hoặc STOPPED).",
                         "inputSchema": {"type": "object", "properties": {}}
+                    },
+                    {
+                        "name": "launch_log_dashboard",
+                        "description": "Khởi chạy trang giao diện Web UI Visual Log Debugger trực quan (http://localhost:8321) hỗ trợ xem log thời gian thực, giải mã crash stack trace và gửi lệnh 2 chiều.",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {
+                                "port": {"type": "integer", "description": "Cổng HTTP khởi chạy (Mặc định: 8321)"}
+                            }
+                        }
                     }
                 ]
                 response = {
@@ -550,6 +571,10 @@ def main():
                     result = handle_stop_simulation()
                 elif tool_name == "get_simulation_status":
                     result = handle_get_simulation_status()
+                elif tool_name == "launch_log_dashboard":
+                    result = handle_launch_log_dashboard(
+                        arguments.get("port", 8321)
+                    )
                 else:
                     result = {"content": [{"type": "text", "text": f"Unknown tool: {tool_name}"}], "isError": True}
                 

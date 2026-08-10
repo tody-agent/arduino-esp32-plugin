@@ -34,6 +34,7 @@ Chúng tôi cung cấp bộ tài liệu song ngữ toàn diện tại thư mục
 ## 🛠️ Tính năng nổi bật
 
 *   💻 **Giả lập Logic Offline**: Chuyển đổi mã nguồn C++ sang mã Python và chạy giả lập logic ngầm ngay trên máy tính mà không cần kết nối với mạch thật.
+*   🖥️ **Trang Visual Log Debugger Web UI**: Giao diện Web trực quan (tại `http://localhost:8321`) theo dõi log thời gian thực, 1-click giải mã lỗi crash Backtrace, kiểm định an toàn GPIO và gửi lệnh nối tiếp 2 chiều.
 *   📈 **Tạo tín hiệu cảm biến giả lập**: Mô phỏng cảm biến đọc giá trị chân pin (`analogRead`) dạng sóng hình sin, hằng số hoặc ngẫu nhiên thông qua cấu hình trong `simulation_sensors.json`.
 *   🔒 **Kiểm định an toàn GPIO (`audit_pins`)**: Tự động phát hiện việc khai báo chân cấm (như chân SPI flash 6-11) làm ngõ ra, chặn nạp code để tránh gây chập cháy thiết bị.
 *   🧠 **Chẩn đoán biên dịch thông minh**: Phân tích lỗi stderr và tự động gợi ý tải thư viện còn thiếu hoặc tùy chỉnh bảng phân vùng nhớ cho chương trình dung lượng lớn.
