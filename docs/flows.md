@@ -7,7 +7,7 @@ robots: index, follow
 
 # System Flows / Sơ đồ Luồng hoạt động
 
-This page details the operation sequences and synchronization patterns of the `arduino-esp32-plugin`.
+This page details the operation sequences and synchronization patterns of the `esp32-master`.
 
 *Trang này mô tả các sơ đồ quy trình hoạt động đồng bộ hóa và vòng đời vận hành hệ thống.*
 

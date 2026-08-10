@@ -3,7 +3,7 @@
     "arduino-esp32-mcp": {
       "command": "python",
       "args": [
-        "C:/path/to/arduino-esp32-plugin/mcp/mcp_server.py"
+        "C:/path/to/esp32-master/mcp/mcp_server.py"
       ],
       "env": {
         "LOCALAPPDATA": "C:/Users/YOUR_USER_NAME/AppData/Local"

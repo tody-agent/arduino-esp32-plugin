@@ -1,5 +1,5 @@
 ---
-title: Jobs-To-Be-Done (JTBD) - arduino-esp32-plugin
+title: Jobs-To-Be-Done (JTBD) - esp32-master
 description: Core customer jobs and outcomes for the ESP32 developer automation plugin.
 keywords: jtbd, jobs to be done, customer jobs, outcomes
 robots: index, follow
@@ -7,7 +7,7 @@ robots: index, follow
 
 # Jobs-To-Be-Done (JTBD)
 
-Why users "hire" `arduino-esp32-plugin` to help them develop, debug, and simulate ESP32 firmwares.
+Why users "hire" `esp32-master` to help them develop, debug, and simulate ESP32 firmwares.
 
 *Lý do cốt lõi người dùng lựa chọn cài đặt bộ công cụ plugin này để phát triển và kiểm thử dự án vi điều khiển.*
 

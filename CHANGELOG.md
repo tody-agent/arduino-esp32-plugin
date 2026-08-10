@@ -1,4 +1,4 @@
-# Changelog: arduino-esp32-plugin
+# Changelog: esp32-master
 
 All notable changes to this project will be documented in this file.
 
@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2026-07-18
 ### Added
-*   Initial official release of `arduino-esp32-plugin`.
+*   Initial official release of `esp32-master`.
 *   **5 Modular Agent Skills**: `cm-arduino-esp32`, `cm-esp32-env`, `cm-esp32-build`, `cm-esp32-flash`, `cm-esp32-debug`.
 *   **Stdio MCP Server (`mcp_server.py`)**: Exposes compilation, physical flashing, background serial logging, stack trace decoding, and GPIO safety audits.
 *   **Automated PowerShell Scripts**: `detect_ports.ps1`, `serial_monitor.ps1`, `decode_stack.ps1`, `audit_pins.ps1`.

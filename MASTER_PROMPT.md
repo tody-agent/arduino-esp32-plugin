@@ -2,7 +2,7 @@
 
 > [!IMPORTANT]
 > **Hướng dẫn dành cho AI Agent kế nhiệm:**
-> Hãy đọc và thực hiện chính xác theo tài liệu OpenSpec và lộ trình 4 pha dưới đây để nâng cấp bộ plugin `arduino-esp32-plugin` hỗ trợ giả lập ảo bằng QEMU Docker và kiểm thử logic offline.
+> Hãy đọc và thực hiện chính xác theo tài liệu OpenSpec và lộ trình 4 pha dưới đây để nâng cấp bộ plugin `esp32-master` hỗ trợ giả lập ảo bằng QEMU Docker và kiểm thử logic offline.
 
 ---
 
@@ -16,7 +16,7 @@
 ## 2. Nhiệm vụ từng Pha (Phased Deliverables)
 
 ### Pha 1: Tích hợp esptool.py & Khởi chạy QEMU Docker
-1.  **Viết Test**: Tạo `arduino-esp32-plugin/skills/cm-arduino-esp32/tests/simulation_core.tests.ps1`. Test cần kiểm định việc tạo file `merged-flash.bin` qua `esptool.py` và khởi chạy container QEMU qua lệnh docker.
+1.  **Viết Test**: Tạo `esp32-master/skills/cm-arduino-esp32/tests/simulation_core.tests.ps1`. Test cần kiểm định việc tạo file `merged-flash.bin` qua `esptool.py` và khởi chạy container QEMU qua lệnh docker.
 2.  **Viết Code**:
     *   Tạo script `skills/cm-arduino-esp32/scripts/launch_qemu.ps1` để gộp file bin và khởi chạy container `Esp32QemuSim` sử dụng image `lcgamboa/qemu-esp32`.
 3.  **Xác nhận**: Chạy `Invoke-Pester` để pass test.

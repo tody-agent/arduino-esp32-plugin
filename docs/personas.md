@@ -1,13 +1,13 @@
 ---
 title: User Personas - ESP32 Developers & AI Agents
-description: Profiles of typical users and customers of the arduino-esp32-plugin ecosystem.
+description: Profiles of typical users and customers of the esp32-master ecosystem.
 keywords: personas, user profiles, esp32 developers, ai agents
 robots: index, follow
 ---
 
 # User Personas / Hồ sơ Người dùng
 
-Understanding who interacts with `arduino-esp32-plugin` to ensure maximum usability and design quality.
+Understanding who interacts with `esp32-master` to ensure maximum usability and design quality.
 
 *Hồ sơ các đối tượng người dùng chính sử dụng bộ plugin nhằm tối ưu hóa trải nghiệm tương tác.*
 

@@ -1,6 +1,6 @@
 # ⚡ ESP32 Master
 
-[![GitHub Release](https://img.shields.io/github/v/release/tody-agent/arduino-esp32-plugin)](https://github.com/tody-agent/arduino-esp32-plugin/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/tody-agent/esp32-master)](https://github.com/tody-agent/esp32-master/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Server](https://img.shields.io/badge/MCP%20Server-Standard%201.0-blueviolet.svg)](https://modelcontextprotocol.io)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)](https://microsoft.com/windows)
@@ -95,7 +95,7 @@ Add `ESP32 Master` MCP server to your AI desktop client configuration (e.g. `%AP
     "esp32-master": {
       "command": "python",
       "args": [
-        "C:/path-to-plugin/arduino-esp32-plugin/mcp/mcp_server.py"
+        "C:/path-to-plugin/esp32-master/mcp/mcp_server.py"
       ],
       "env": {
         "LOCALAPPDATA": "C:/Users/YOUR_USER/AppData/Local"

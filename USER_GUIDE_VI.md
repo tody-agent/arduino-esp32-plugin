@@ -32,9 +32,9 @@ graph TD
 ---
 
 ## 2. Cấu trúc thư mục Plugin
-Thư mục đóng gói `arduino-esp32-plugin` bao gồm:
+Thư mục đóng gói `esp32-master` bao gồm:
 ```
-arduino-esp32-plugin/
+esp32-master/
 ├── plugin.json                       # Định nghĩa cấu hình plugin (đăng ký 5 skill)
 ├── USER_GUIDE.md                     # Hướng dẫn chi tiết sử dụng này
 ├── mcp/
@@ -81,7 +81,7 @@ arduino-esp32-plugin/
         "arduino-esp32-mcp": {
           "command": "python",
           "args": [
-            "C:/ĐƯỜNG_DẪN_ĐẾN_THƯ_MỤC/arduino-esp32-plugin/mcp/mcp_server.py"
+            "C:/ĐƯỜNG_DẪN_ĐẾN_THƯ_MỤC/esp32-master/mcp/mcp_server.py"
           ],
           "env": {
             "LOCALAPPDATA": "C:/Users/TÊN_USER_CỦA_BẠN/AppData/Local"
@@ -99,7 +99,7 @@ arduino-esp32-plugin/
 3.  Điền thông tin:
     *   **Name:** `arduino-esp32-mcp`
     *   **Type:** `command`
-    *   **Command:** `python -u "C:/ĐƯỜNG_DẪN_ĐẾN_THƯ_MỤC/arduino-esp32-plugin/mcp/mcp_server.py"`
+    *   **Command:** `python -u "C:/ĐƯỜNG_DẪN_ĐẾN_THƯ_MỤC/esp32-master/mcp/mcp_server.py"`
 4.  Nhấn **Save** để kết nối.
 
 ---

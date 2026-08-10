@@ -33,9 +33,9 @@ graph TD
 
 ## 2. Directory Structure
 
-The bundled `arduino-esp32-plugin` is organized as follows:
+The bundled `esp32-master` is organized as follows:
 ```
-arduino-esp32-plugin/
+esp32-master/
 ├── plugin.json                       # Registers the 5 skills as metadata
 ├── README.md                         # Project introduction and bilingual links
 ├── USER_GUIDE_EN.md                  # This file
@@ -84,7 +84,7 @@ To enable ESP32 programming tools inside the Claude Desktop application:
         "arduino-esp32-mcp": {
           "command": "python",
           "args": [
-            "C:/YOUR_FOLDER_PATH/arduino-esp32-plugin/mcp/mcp_server.py"
+            "C:/YOUR_FOLDER_PATH/esp32-master/mcp/mcp_server.py"
           ],
           "env": {
             "LOCALAPPDATA": "C:/Users/YOUR_USERNAME/AppData/Local"
@@ -102,7 +102,7 @@ To allow the Cursor AI assistant to build and flash hardware directly from the e
 3.  Enter the details:
     *   **Name:** `arduino-esp32-mcp`
     *   **Type:** `command`
-    *   **Command:** `python -u "C:/YOUR_FOLDER_PATH/arduino-esp32-plugin/mcp/mcp_server.py"`
+    *   **Command:** `python -u "C:/YOUR_FOLDER_PATH/esp32-master/mcp/mcp_server.py"`
 4.  Click **Save** to connect.
 
 ---

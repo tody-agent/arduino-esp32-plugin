@@ -1,6 +1,6 @@
 $ServerPath = "$PSScriptRoot\..\..\..\mcp\mcp_server.py"
 if (-not (Test-Path $ServerPath)) {
-    $ServerPath = "C:\Users\block\Documents\antigravity\jolly-planck\arduino-esp32-plugin\mcp\mcp_server.py"
+    $ServerPath = "C:\Users\block\Documents\antigravity\jolly-planck\esp32-master\mcp\mcp_server.py"
 }
 
 Describe "mcp_server.py (Simulation Tools)" {

@@ -1,13 +1,13 @@
 ---
 title: API Reference - MCP Server Tools
-description: Full reference documentation for all 11 JSON-RPC tools exposed by the arduino-esp32-plugin MCP server.
+description: Full reference documentation for all 11 JSON-RPC tools exposed by the esp32-master MCP server.
 keywords: api, reference, json-rpc, mcp tools, schema
 robots: index, follow
 ---
 
 # API Reference / Tra cứu Công cụ
 
-This page catalogs all 11 JSON-RPC tools exposed by the `arduino-esp32-plugin` MCP Server.
+This page catalogs all 11 JSON-RPC tools exposed by the `esp32-master` MCP Server.
 
 *Bảng tra cứu toàn bộ 11 công cụ được đăng ký trên hệ thống MCP Server.*
 

@@ -1,5 +1,5 @@
 ---
-title: Codebase Analysis - arduino-esp32-plugin
+title: Codebase Analysis - esp32-master
 description: Technical codebase analysis of the ESP32 developer plugin, detailing its structure, scripts, and integration hooks.
 keywords: esp32, codebase, structure, scripts, arduino-cli, powershell
 robots: index, follow
@@ -7,16 +7,16 @@ robots: index, follow
 
 # Codebase Analysis / Phân tích Mã nguồn
 
-This page provides an architectural scan of the `arduino-esp32-plugin` codebase, exposing its layout, key entry points, scripts, and dependencies.
+This page provides an architectural scan of the `esp32-master` codebase, exposing its layout, key entry points, scripts, and dependencies.
 
-*Trang này phân tích chi tiết cấu trúc thư mục, các script bổ trợ, điểm khởi chạy và dependencies của dự án `arduino-esp32-plugin`.*
+*Trang này phân tích chi tiết cấu trúc thư mục, các script bổ trợ, điểm khởi chạy và dependencies của dự án `esp32-master`.*
 
 ---
 
 ## 📂 Directory Layout / Cấu trúc Thư mục
 
 ```
-arduino-esp32-plugin/
+esp32-master/
 ├── plugin.json                       # Registers the 5 skills as metadata
 ├── README.md                         # Bilingual overview & links
 ├── USER_GUIDE_EN.md                  # Detailed setup in English

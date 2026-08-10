@@ -1,5 +1,5 @@
 ---
-title: System Architecture - arduino-esp32-plugin
+title: System Architecture - esp32-master
 description: Technical architecture of the ESP32 plugin, detailing the hybrid automation engine, state caches, and architectural design records.
 keywords: architecture, design, hybrid engine, adr, workspace caching
 robots: index, follow
@@ -7,7 +7,7 @@ robots: index, follow
 
 # System Architecture / Kiến trúc Hệ thống
 
-This document details the architectural decisions (ADRs), workspace states, and the hybrid design of `arduino-esp32-plugin`.
+This document details the architectural decisions (ADRs), workspace states, and the hybrid design of `esp32-master`.
 
 *Tài liệu phân tích kiến trúc hệ thống lai (kết hợp phần cứng và giả lập), cách quản lý dữ liệu lưu vết và các quyết định thiết kế cốt lõi (ADR).*
 
