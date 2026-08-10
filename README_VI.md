@@ -5,6 +5,8 @@
 [![MCP Server](https://img.shields.io/badge/MCP%20Server-Standard%201.0-blueviolet.svg)](https://modelcontextprotocol.io)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)](https://microsoft.com/windows)
 
+![ESP32 Master Hero Showcase](docs/assets/esp32_master_hero.jpg)
+
 > **ESP32 Master** là bộ công cụ phát triển phần cứng nhúng **ESP32** chuyên nghiệp, tích hợp máy chủ Model Context Protocol (MCP) dành riêng cho các Trợ lý AI (Cursor, Claude Desktop, Antigravity, Cline, Roo Code) và các Nhà phát triển / Maker phần cứng.
 
 Dự án giải quyết triệt để những nỗi đau lớn nhất khi lập trình vi điều khiển: **Tranh chấp cổng COM (Port Access Denied)**, **Mạch bị crash đơ chỉ in ra chuỗi hex khó hiểu**, **Thiếu giao diện giám sát trực quan**, và **Nguy cơ chập cháy hỏng mạch do khai báo nhầm chân GPIO**.
@@ -16,6 +18,9 @@ Dự án giải quyết triệt để những nỗi đau lớn nhất khi lập 
 ## 🌟 Các Tính Năng Đột Phá
 
 ### 1. 📱 Giao Diện Web UI ESP32 Mobile Studio (`http://localhost:8321`)
+
+![ESP32 Studio Web UI Dashboard](docs/assets/esp32_studio_webui.jpg)
+
 - **Vòng Tròn Nhịp Tim Thiết Bị (Heartbeat Ring)**: Hiển thị trạng thái mạch sống/chết trực quan bằng màu xanh/đỏ thời gian thực.
 - **Trợ Lý Sửa Lỗi Tự Động (Smart Repair Assistant)**: Tự động phân tích các chuỗi lỗi hex crash phức tạp thành hướng dẫn khắc phục bằng **Tiếng Việt** dễ hiểu.
 - **Nhật Ký Thời Gian Thực (Log Terminal)**: Giao diện dòng lệnh chuẩn font monospace, phân loại màu trực quan (`INFO`, `WARN`, `PANIC`).
@@ -26,6 +31,9 @@ Dự án giải quyết triệt để những nỗi đau lớn nhất khi lập 
 - **Tự Động Nhường Cổng COM**: Tự động đóng Serial Monitor khi phát hiện `arduino-cli` tiến hành nạp code (flash) và tự động mở lại monitor ngay sau khi nạp xong. Tránh hoàn toàn lỗi **Access Denied / Port Busy**.
 
 ### 3. 🔍 Giải Mã Lỗi Crash Stack Trace 1-Click
+
+![ESP32 Stack Decrypter Infographic](docs/assets/esp32_stack_decoder.jpg)
+
 - **Chuyển Mã Hex Thành File & Dòng Code**: Dùng công cụ `addr2line` đối chiếu file `.elf` để giải mã các chuỗi địa chỉ hex (`Backtrace: 0x400d1254:0x3ffb1f20...`) thành tên file C++ và **chính xác số dòng code bị lỗi** chỉ trong <2 giây.
 
 ### 4. 🧪 Mô Phỏng Logic & Giả Lập Cảm Biến Trên Máy Tính

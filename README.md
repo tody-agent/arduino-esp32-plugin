@@ -5,6 +5,8 @@
 [![MCP Server](https://img.shields.io/badge/MCP%20Server-Standard%201.0-blueviolet.svg)](https://modelcontextprotocol.io)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)](https://microsoft.com/windows)
 
+![ESP32 Master Hero Showcase](docs/assets/esp32_master_hero.jpg)
+
 > **ESP32 Master** is the ultimate AI-first and human-friendly developer suite and Model Context Protocol (MCP) server for professional **ESP32** firmware development using **Arduino CLI**.
 
 Designed specifically for AI-assisted workflows (Cursor, Claude Desktop, Antigravity, Cline, Roo Code) as well as non-tech makers and professional IoT engineers. It eliminates the most frustrating pain points of embedded development: **COM port conflicts**, **cryptic hex stack crashes**, **lack of visual debugging**, and **accidental hardware damage**.
@@ -16,6 +18,9 @@ Designed specifically for AI-assisted workflows (Cursor, Claude Desktop, Antigra
 ## 🌟 Key Features
 
 ### 1. 📱 Web UI Mobile & Desktop Studio (`http://localhost:8321`)
+
+![ESP32 Studio Web UI Dashboard](docs/assets/esp32_studio_webui.jpg)
+
 - **Visual Heartbeat Ring**: Real-time pulsing green/red status indicator showing ESP32 health.
 - **Smart Repair Assistant**: Automatically translates raw hex crash trace dumps into plain-language repair steps.
 - **Real-Time Log Stream**: Monospaced terminal with live filtering (`INFO`, `WARN`, `PANIC`).
@@ -26,6 +31,9 @@ Designed specifically for AI-assisted workflows (Cursor, Claude Desktop, Antigra
 - **Automatic COM Port Arbitration**: Prevents `Access Denied` errors by automatically releasing the serial port when `arduino-cli` starts flashing and re-engaging immediately after upload completes.
 
 ### 3. 🔍 1-Click Crash Stack Trace Decrypter
+
+![ESP32 Stack Decrypter Infographic](docs/assets/esp32_stack_decoder.jpg)
+
 - **Exact Line Number Resolution**: Resolves raw hex addresses (`Backtrace: 0x400d1254:0x3ffb1f20...`) into exact C++ source code filenames and line numbers using `addr2line` against the compiled `.elf` binary.
 
 ### 4. 🧪 Host-Side Logic Simulator & Waveform Mocks
